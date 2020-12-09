@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/burgersphear/static/css/main.3db7ba43.chunk.css",
-    "main.js": "/burgersphear/static/js/main.c6008d23.chunk.js",
-    "main.js.map": "/burgersphear/static/js/main.c6008d23.chunk.js.map",
+    "main.css": "/burgersphear/static/css/main.bbc3dceb.chunk.css",
+    "main.js": "/burgersphear/static/js/main.07ca8ba0.chunk.js",
+    "main.js.map": "/burgersphear/static/js/main.07ca8ba0.chunk.js.map",
     "runtime-main.js": "/burgersphear/static/js/runtime-main.267e78ea.js",
     "runtime-main.js.map": "/burgersphear/static/js/runtime-main.267e78ea.js.map",
-    "static/js/2.20db2efb.chunk.js": "/burgersphear/static/js/2.20db2efb.chunk.js",
-    "static/js/2.20db2efb.chunk.js.map": "/burgersphear/static/js/2.20db2efb.chunk.js.map",
+    "static/js/2.7343517e.chunk.js": "/burgersphear/static/js/2.7343517e.chunk.js",
+    "static/js/2.7343517e.chunk.js.map": "/burgersphear/static/js/2.7343517e.chunk.js.map",
     "static/js/3.8b42a5ff.chunk.js": "/burgersphear/static/js/3.8b42a5ff.chunk.js",
     "static/js/3.8b42a5ff.chunk.js.map": "/burgersphear/static/js/3.8b42a5ff.chunk.js.map",
     "index.html": "/burgersphear/index.html",
-    "static/css/main.3db7ba43.chunk.css.map": "/burgersphear/static/css/main.3db7ba43.chunk.css.map",
-    "static/js/2.20db2efb.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.20db2efb.chunk.js.LICENSE.txt",
+    "static/css/main.bbc3dceb.chunk.css.map": "/burgersphear/static/css/main.bbc3dceb.chunk.css.map",
+    "static/js/2.7343517e.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.7343517e.chunk.js.LICENSE.txt",
     "static/media/burger-logo.ec69c7f6.png": "/burgersphear/static/media/burger-logo.ec69c7f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.267e78ea.js",
-    "static/js/2.20db2efb.chunk.js",
-    "static/css/main.3db7ba43.chunk.css",
-    "static/js/main.c6008d23.chunk.js"
+    "static/js/2.7343517e.chunk.js",
+    "static/css/main.bbc3dceb.chunk.css",
+    "static/js/main.07ca8ba0.chunk.js"
   ]
 }
