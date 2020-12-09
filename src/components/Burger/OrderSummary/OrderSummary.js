@@ -1,12 +1,13 @@
 import React from 'react';
-import Aux from '../../../hoc/Auxiliary';
+import Aux from '../../../hoc/Auxiliary/Auxiliary';
 import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
     const ingridients = Object.keys(props.ingridients)
     .map(igKey => {
         return <li key={igKey}>
-                    {igKey}: {props.ingridients[igKey]}
+                    {igKey.charAt(0).toUpperCase() + igKey.slice(1)}
+                        : {props.ingridients[igKey]}
                 </li>
     });
     return (

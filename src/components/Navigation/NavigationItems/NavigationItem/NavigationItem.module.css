@@ -38,7 +38,11 @@
     border-bottom: 4px solid transparent;
   }
 
-  .NavigationItem a:hover,
+  .NavigationItem a:hover {
+    background-color: #8f5c2c;
+    color: white;
+    border-bottom: none;
+  }
   .NavigationItem a:active,
   .NavigationItem a.active {
     background-color: #8f5c2c;
