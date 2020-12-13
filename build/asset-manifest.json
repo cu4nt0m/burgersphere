@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/burgersphear/static/css/main.fd6b65d9.chunk.css",
-    "main.js": "/burgersphear/static/js/main.092482f2.chunk.js",
-    "main.js.map": "/burgersphear/static/js/main.092482f2.chunk.js.map",
-    "runtime-main.js": "/burgersphear/static/js/runtime-main.267e78ea.js",
-    "runtime-main.js.map": "/burgersphear/static/js/runtime-main.267e78ea.js.map",
-    "static/js/2.7343517e.chunk.js": "/burgersphear/static/js/2.7343517e.chunk.js",
-    "static/js/2.7343517e.chunk.js.map": "/burgersphear/static/js/2.7343517e.chunk.js.map",
-    "static/js/3.8b42a5ff.chunk.js": "/burgersphear/static/js/3.8b42a5ff.chunk.js",
-    "static/js/3.8b42a5ff.chunk.js.map": "/burgersphear/static/js/3.8b42a5ff.chunk.js.map",
+    "main.css": "/burgersphear/static/css/main.78f2051c.chunk.css",
+    "main.js": "/burgersphear/static/js/main.b9891df6.chunk.js",
+    "main.js.map": "/burgersphear/static/js/main.b9891df6.chunk.js.map",
+    "runtime-main.js": "/burgersphear/static/js/runtime-main.dc210117.js",
+    "runtime-main.js.map": "/burgersphear/static/js/runtime-main.dc210117.js.map",
+    "static/js/2.6fc3f42d.chunk.js": "/burgersphear/static/js/2.6fc3f42d.chunk.js",
+    "static/js/2.6fc3f42d.chunk.js.map": "/burgersphear/static/js/2.6fc3f42d.chunk.js.map",
+    "static/js/3.6a6cc1a2.chunk.js": "/burgersphear/static/js/3.6a6cc1a2.chunk.js",
+    "static/js/3.6a6cc1a2.chunk.js.map": "/burgersphear/static/js/3.6a6cc1a2.chunk.js.map",
     "index.html": "/burgersphear/index.html",
-    "static/css/main.fd6b65d9.chunk.css.map": "/burgersphear/static/css/main.fd6b65d9.chunk.css.map",
-    "static/js/2.7343517e.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.7343517e.chunk.js.LICENSE.txt",
+    "static/css/main.78f2051c.chunk.css.map": "/burgersphear/static/css/main.78f2051c.chunk.css.map",
+    "static/js/2.6fc3f42d.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.6fc3f42d.chunk.js.LICENSE.txt",
     "static/media/burger-logo.ec69c7f6.png": "/burgersphear/static/media/burger-logo.ec69c7f6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.267e78ea.js",
-    "static/js/2.7343517e.chunk.js",
-    "static/css/main.fd6b65d9.chunk.css",
-    "static/js/main.092482f2.chunk.js"
+    "static/js/runtime-main.dc210117.js",
+    "static/js/2.6fc3f42d.chunk.js",
+    "static/css/main.78f2051c.chunk.css",
+    "static/js/main.b9891df6.chunk.js"
   ]
 }
