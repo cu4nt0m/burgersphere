@@ -4,10 +4,11 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../hoc/axios-orders';
+import axios from '../../hoc/axios-orders'; //created instance of axios
 import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
-//this is example for pull
+//Ingridient prices..
 const INGRIDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
@@ -15,6 +16,7 @@ const INGRIDIENT_PRICES = {
     bacon: 2,
 }
 
+//Initializations
 class BurgerBuilder extends Component {
     state = {
         ingridients : {
@@ -28,7 +30,7 @@ class BurgerBuilder extends Component {
         purchasing: false,
         loading: false
     }
-
+//methods----------------
     updatePurchaseState = (ingridients) => {
         
         const sum = Object.keys(ingridients)
@@ -117,7 +119,9 @@ class BurgerBuilder extends Component {
                 this.setState({loading: false, purchasing: false});
             });
     }
+//end of methods-----------------------
 
+//Render section-=-=-=-=-=-=-=-=-=-=-=-=-
     render() {
         const disabledInfo = {
             ...this.state.ingridients
@@ -134,7 +138,7 @@ class BurgerBuilder extends Component {
         if (this.state.loading) {
             orderSummary = <Spinner />;
         }
-
+//end of Render section -=-=-=-=-=-=--=-=-=-=-=
         return(
             <Aux>
                 <Modal show={this.state.purchasing} purchaseCancel={this.purchaseCancelHandler}>
@@ -154,4 +158,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);
