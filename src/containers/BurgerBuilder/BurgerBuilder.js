@@ -8,6 +8,9 @@ import axios from '../../hoc/axios-orders'; //created instance of axios
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
+//a good place to fetch data(axios) 
+//is inside the componentDidMount() lifecycle.
+
 //Ingridient prices..
 const INGRIDIENT_PRICES = {
     salad: 0.5,
@@ -19,17 +22,24 @@ const INGRIDIENT_PRICES = {
 //Initializations
 class BurgerBuilder extends Component {
     state = {
-        ingridients : {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
+        ingridients : null,
         totalPrice: 4, 
         purchasable: false,
         purchasing: false,
-        loading: false
+        loading: false,
+        error: false
     }
+
+componentDidMount() {
+    axios.get('https://burgershpear-default-rtdb.firebaseio.com/ingridients.json')
+        .then(response => {
+            this.setState({ingridients: response.data});
+        })
+        .catch(error => {
+            this.setState({error: true});
+        });
+}
+
 //methods----------------
     updatePurchaseState = (ingridients) => {
         
@@ -84,13 +94,11 @@ class BurgerBuilder extends Component {
     };
 
     orderPurchaseHandler = () => {
-        this.setState({purchasing: true})
+        this.setState({purchasing: true});
     }
 
     purchaseCancelHandler = () => {
-        this.setState({
-            purchasing: false
-        })
+        this.setState({purchasing: false});
     }
 
     purchaseContinueHandler = () => {
@@ -109,7 +117,6 @@ class BurgerBuilder extends Component {
                 email: 'harooni@gmail.com',
             },
             deliveryMethod: 'fastest'
-
         };
         axios.post('/orders.json', order)
             .then(response => {
@@ -118,7 +125,7 @@ class BurgerBuilder extends Component {
             .catch(error => {
                 this.setState({loading: false, purchasing: false});
             });
-    }
+        }
 //end of methods-----------------------
 
 //Render section-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -129,12 +136,33 @@ class BurgerBuilder extends Component {
         for (let key in disabledInfo){
             disabledInfo[key] = disabledInfo[key] <= 0;
         };
-        let orderSummary = <OrderSummary 
-            ingridients={this.state.ingridients}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler}
-            price={this.state.totalPrice}/>;
+        
+    //checking till ingredients get request finishes then renders
+        let burger = this.state.error ? 
+            <p style={{textAlign: 'center'}}>Ingredients can not load. Network error!</p>
+             : <Spinner />;
+        let orderSummary = null;
 
+        if(this.state.ingridients){
+            burger = (
+                <Aux>
+                    <Burger ingridients={this.state.ingridients}/>
+                        <BuildControls 
+                            addIg={this.addIngridientHandler}
+                            removeIg={this.removeIngridient}
+                            disabled={disabledInfo}
+                            price={this.state.totalPrice}
+                            orderDisabled={this.state.purchasable}
+                            orderBtn={this.orderPurchaseHandler}/>
+                </Aux>
+                );
+                orderSummary = <OrderSummary 
+                    ingridients={this.state.ingridients}
+                    purchaseCancelled={this.purchaseCancelHandler}
+                    purchaseContinued={this.purchaseContinueHandler}
+                    price={this.state.totalPrice}/>;
+
+            }
         if (this.state.loading) {
             orderSummary = <Spinner />;
         }
@@ -144,15 +172,7 @@ class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} purchaseCancel={this.purchaseCancelHandler}>
                     {orderSummary}
                 </Modal>
-
-                <Burger ingridients={this.state.ingridients}/>
-                <BuildControls 
-                    addIg={this.addIngridientHandler}
-                    removeIg={this.removeIngridient}
-                    disabled={disabledInfo}
-                    price={this.state.totalPrice}
-                    orderDisabled={this.state.purchasable}
-                    orderBtn={this.orderPurchaseHandler}/>
+                {burger}
             </Aux>
         );
     }
