@@ -31,6 +31,7 @@ class BurgerBuilder extends Component {
     }
 
 componentDidMount() {
+    console.log(this.props);
     axios.get('https://burgershpear-default-rtdb.firebaseio.com/ingridients.json')
         .then(response => {
             this.setState({ingridients: response.data});
@@ -103,28 +104,29 @@ componentDidMount() {
 
     purchaseContinueHandler = () => {
         //alert('You are going well!');
-        this.setState({loading: true})
-        const order = {
-            ingridients: this.state.ingridients,
-            price: this.state.price,
-            customer: {
-                name: 'Arsalan HK',
-                address: {
-                    street: 'Rushdie st.',
-                    zipcode: '43821',
-                    country: 'IRAN'
-                },
-                email: 'harooni@gmail.com',
-            },
-            deliveryMethod: 'fastest'
-        };
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false})
-            })
-            .catch(error => {
-                this.setState({loading: false, purchasing: false});
-            });
+        // this.setState({loading: true})
+        // const order = {
+        //     ingridients: this.state.ingridients,
+        //     price: this.state.price,
+        //     customer: {
+        //         name: 'Arsalan HK',
+        //         address: {
+        //             street: 'Rushdie st.',
+        //             zipcode: '43821',
+        //             country: 'IRAN'
+        //         },
+        //         email: 'harooni@gmail.com',
+        //     },
+        //     deliveryMethod: 'fastest'
+        // };
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({loading: false, purchasing: false})
+        //     })
+        //     .catch(error => {
+        //         this.setState({loading: false, purchasing: false});
+        //     });
+        this.props.history.push('/checkout');
         }
 //end of methods-----------------------
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Aux from '../Auxiliary/Auxiliary';
 import Modal from '../../components/UI/Modal/Modal';
-import Axios from 'axios';
 
 const withErrorHandler = ( WrapperComponent, axios ) => {
     return class extends Component {
@@ -20,7 +19,8 @@ const withErrorHandler = ( WrapperComponent, axios ) => {
                 this.setState({error: error});
             });
         }
-
+//following lifecycle is for cleaning up the created interceptors for wrapped component when we wont use
+//it anymore, so me 'unmount' them.
         componentWillUnmount() {
             axios.interceptors.request.eject(this.reqInterceptor);
             axios.interceptors.response.eject(this.resInterceptor);

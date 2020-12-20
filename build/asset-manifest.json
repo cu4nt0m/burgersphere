@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/burgersphear/static/css/main.78f2051c.chunk.css",
-    "main.js": "/burgersphear/static/js/main.b9891df6.chunk.js",
-    "main.js.map": "/burgersphear/static/js/main.b9891df6.chunk.js.map",
+    "main.js": "/burgersphear/static/js/main.2cad114f.chunk.js",
+    "main.js.map": "/burgersphear/static/js/main.2cad114f.chunk.js.map",
     "runtime-main.js": "/burgersphear/static/js/runtime-main.dc210117.js",
     "runtime-main.js.map": "/burgersphear/static/js/runtime-main.dc210117.js.map",
-    "static/js/2.6fc3f42d.chunk.js": "/burgersphear/static/js/2.6fc3f42d.chunk.js",
-    "static/js/2.6fc3f42d.chunk.js.map": "/burgersphear/static/js/2.6fc3f42d.chunk.js.map",
+    "static/js/2.f997a481.chunk.js": "/burgersphear/static/js/2.f997a481.chunk.js",
+    "static/js/2.f997a481.chunk.js.map": "/burgersphear/static/js/2.f997a481.chunk.js.map",
     "static/js/3.6a6cc1a2.chunk.js": "/burgersphear/static/js/3.6a6cc1a2.chunk.js",
     "static/js/3.6a6cc1a2.chunk.js.map": "/burgersphear/static/js/3.6a6cc1a2.chunk.js.map",
     "index.html": "/burgersphear/index.html",
     "static/css/main.78f2051c.chunk.css.map": "/burgersphear/static/css/main.78f2051c.chunk.css.map",
-    "static/js/2.6fc3f42d.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.6fc3f42d.chunk.js.LICENSE.txt",
+    "static/js/2.f997a481.chunk.js.LICENSE.txt": "/burgersphear/static/js/2.f997a481.chunk.js.LICENSE.txt",
     "static/media/burger-logo.ec69c7f6.png": "/burgersphear/static/media/burger-logo.ec69c7f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.dc210117.js",
-    "static/js/2.6fc3f42d.chunk.js",
+    "static/js/2.f997a481.chunk.js",
     "static/css/main.78f2051c.chunk.css",
-    "static/js/main.b9891df6.chunk.js"
+    "static/js/main.2cad114f.chunk.js"
   ]
 }
