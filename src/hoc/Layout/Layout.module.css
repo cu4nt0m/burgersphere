@@ -1,3 +1,13 @@
 .Content {
   margin-top: 72px;
 }
+
+.Footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: none;
+  color: #b9b7b7;
+  text-align: center;
+}

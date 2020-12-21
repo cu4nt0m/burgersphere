@@ -29,6 +29,11 @@ class Layout extends Component {
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
+                <footer className={classes.Footer}>
+                    <p>Under development by cu4nt0m
+                        Arsalan H.
+                    </p>
+                </footer>
             </Aux>
         );
     }
