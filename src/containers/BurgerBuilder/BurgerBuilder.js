@@ -129,12 +129,14 @@ componentDidMount() {
         const queryParams = [];
         for (let i in this.state.ingridients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
-            
+            //We loop our ingredients in queryParams as ['bacon=0','meat=1',...] 
         }
         const queryString = queryParams.join('&');
+        //join the array elements together with an '&' between, so we get sth like : 'bacon=0&meat=1...'
         this.props.history.push({
             pathname: '/checkout',
             search: '?' + queryString
+            //we push that string we made to the /checkout path and search param, so we can access it in the checkout page.
         });
         }
 //end of methods-----------------------
