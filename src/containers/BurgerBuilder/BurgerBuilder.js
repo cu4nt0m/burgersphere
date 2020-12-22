@@ -126,7 +126,16 @@ componentDidMount() {
         //     .catch(error => {
         //         this.setState({loading: false, purchasing: false});
         //     });
-        this.props.history.push('/checkout');
+        const queryParams = [];
+        for (let i in this.state.ingridients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
+            
+        }
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
         }
 //end of methods-----------------------
 
