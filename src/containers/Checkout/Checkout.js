@@ -6,12 +6,7 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
     state = {
-        ingridients: {
-            salad: 1,
-            meat: 1,
-            cheese: 1,
-            bacon: 1
-        },
+        ingridients: null,
         totalPrice: 0
     }
 

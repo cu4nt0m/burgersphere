@@ -20,7 +20,7 @@ class ContactData extends Component {
         event.preventDefault();
         this.setState({loading: true})
         const order = {
-            ingridients: this.state.ingridients,
+            ingridients: this.props.ingridients,
             price: this.props.price,
             customer: {
                 name: 'Arsalan HK',
@@ -44,18 +44,21 @@ class ContactData extends Component {
     }
 
     render() {
-        let waitComponent = <Spinner />
+        let form = (
+            <form>
+                <input className={classes.Input} type="text" name="name" placeholder="Your name..." />
+                <input className={classes.Input} type="email" name="email" placeholder="Your email..." />
+                <input className={classes.Input} type="text" name="name" placeholder="Your address..." />
+                <input className={classes.Input} type="text" name="postal" placeholder="Your postal code..." />
+                <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
+            </form>);
+        if (this.state.loading){
+            form = <Spinner />;
+        }
         return(
             <div className={classes.ContactData}>
                 <h4>Enter your contact data:</h4>
-                {!this.state.loading ?
-                <form>
-                    <input className={classes.Input} type="text" name="name" placeholder="Your name..." />
-                    <input className={classes.Input} type="email" name="email" placeholder="Your email..." />
-                    <input className={classes.Input} type="text" name="name" placeholder="Your address..." />
-                    <input className={classes.Input} type="text" name="postal" placeholder="Your postal code..." />
-                    <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
-                </form> : waitComponent}
+                {form}
             </div>
         );
     }
