@@ -104,33 +104,13 @@ componentDidMount() {
 
     purchaseContinueHandler = () => {
         //alert('You are going well!');
-        // this.setState({loading: true})
-        // const order = {
-        //     ingridients: this.state.ingridients,
-        //     price: this.state.price,
-        //     customer: {
-        //         name: 'Arsalan HK',
-        //         address: {
-        //             street: 'Rushdie st.',
-        //             zipcode: '43821',
-        //             country: 'IRAN'
-        //         },
-        //         email: 'harooni@gmail.com',
-        //     },
-        //     deliveryMethod: 'fastest'
-        // };
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({loading: false, purchasing: false})
-        //     })
-        //     .catch(error => {
-        //         this.setState({loading: false, purchasing: false});
-        //     });
+        
         const queryParams = [];
         for (let i in this.state.ingridients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
-            //We loop our ingredients in queryParams as ['bacon=0','meat=1',...] 
+            //We loop our ingre dients in queryParams as ['bacon=0','meat=1',...] 
         }
+        queryParams.push('price='+ this.state.totalPrice);
         const queryString = queryParams.join('&');
         //join the array elements together with an '&' between, so we get sth like : 'bacon=0&meat=1...'
         this.props.history.push({
