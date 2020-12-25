@@ -38,7 +38,7 @@ class Orders extends Component {
                     price={order.price}
                     date={order.orderDate}/>
                 )).reverse()}
-                {/* reverse added extra to reverse the order in my orders, may change later */}
+                {/* reverse added to reverse the order in my orders, may change later */}
             </div>
         );
     }

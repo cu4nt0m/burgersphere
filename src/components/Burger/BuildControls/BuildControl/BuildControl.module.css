@@ -8,6 +8,7 @@
 .BuildControl button {
   display: block;
   font: inherit;
+  border-radius: 8px;
   padding: 5px;
   margin: 0 5px;
   width: 80px;
