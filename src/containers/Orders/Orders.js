@@ -36,7 +36,8 @@ class Orders extends Component {
                     <Order key={order.id}
                     ingridients={order.ingridients}
                     price={order.price}/>
-                ))}
+                )).reverse()}
+                {/* reverse added extra to reverse the order in my orders, may change later */}
             </div>
         );
     }

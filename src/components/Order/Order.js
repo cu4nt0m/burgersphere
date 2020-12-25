@@ -26,11 +26,12 @@ const order = (props) => {
                 {ig.name} ({ig.amount})</span>
             
     });
-
+    
     return(
         <div className={classes.Order}>
             <p>Ingredients: {ingridientOutput}</p>
             <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
+            
         </div>
         );
 };
