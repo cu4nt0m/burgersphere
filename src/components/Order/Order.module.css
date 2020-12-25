@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+.Date {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 @media (max-width: 499px) {
   .Order {
     width: 100%;

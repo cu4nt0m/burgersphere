@@ -75,14 +75,17 @@ class ContactData extends Component {
     orderHandler = (event) => {
         event.preventDefault();
         this.setState({loading: true});
-        const formData = {}
+        const formData = {};
+        //timeNow holds time of the submission moment and we post it to to db and we get it in my orders page :) 
+        const timeNow = new Date().toLocaleString();
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
         const order = {
             ingridients: this.props.ingridients,
             price: this.props.price,
-            orderData: formData
+            orderData: formData,
+            orderDate: timeNow
         };
         axios.post('/orders.json', order)
             .then(response => {

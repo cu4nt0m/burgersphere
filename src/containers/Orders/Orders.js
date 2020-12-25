@@ -35,7 +35,8 @@ class Orders extends Component {
                 {this.state.orders.map(order => (
                     <Order key={order.id}
                     ingridients={order.ingridients}
-                    price={order.price}/>
+                    price={order.price}
+                    date={order.orderDate}/>
                 )).reverse()}
                 {/* reverse added extra to reverse the order in my orders, may change later */}
             </div>
