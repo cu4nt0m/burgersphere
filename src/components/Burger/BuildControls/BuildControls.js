@@ -23,6 +23,7 @@ const buildControls = (props) => (
             })
         }
         <button 
+            style={{marginTop: '15px'}}
             className={classes.OrderButton} 
             disabled={!props.orderDisabled}
             onClick={props.orderBtn}>

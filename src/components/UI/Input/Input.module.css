@@ -30,3 +30,8 @@
   border: 1px solid red;
   background-color: salmon;
 }
+
+.ErrorMassege {
+  color: red;
+  margin: 10px 0;
+}

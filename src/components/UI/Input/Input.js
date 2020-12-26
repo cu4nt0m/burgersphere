@@ -5,8 +5,10 @@ const input = (props) => {
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 
+    let errorMassege = null;
     if(props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
+        errorMassege = <p className={classes.ErrorMassege}>{props.errMassege}</p>;
     }
 
     switch(props.elementType) {
@@ -47,6 +49,7 @@ const input = (props) => {
         <div className={classes.Input}>
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
+            {errorMassege}
         </div>
         )};
 

@@ -62,7 +62,8 @@ class ContactData extends Component {
                     maxLength: 5
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                errorMassege: "* Please enter a valid Zip Code."
             },
             country: {
                 elementType: 'input',
@@ -98,10 +99,13 @@ class ContactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'},
                     ]
                 },
-                value: ''
+                validation: {},
+                value: '',
+                valid: true
             }
         },
         loading: false,
+        formIsValid: false
     }
 //everything is handled in the state, we just bind them to some consts and post them to database with the following function.
     orderHandler = (event) => {
@@ -160,10 +164,16 @@ class ContactData extends Component {
         cloneElementForm.touched = true;
         cloneOrderForm[inputIdentifier] = cloneElementForm;
 
-        console.log(cloneElementForm);
+        let formIsValid = true;
+        for (let inputIdentifier in cloneOrderForm) {
+            formIsValid = cloneOrderForm[inputIdentifier].valid && formIsValid;
+        }
+
+        console.log(formIsValid);
 
         this.setState({
-            orderForm: cloneOrderForm
+            orderForm: cloneOrderForm,
+            formIsValid: formIsValid
         })
     }
 
@@ -175,6 +185,7 @@ class ContactData extends Component {
                 config: this.state.orderForm[key]
             })
         }
+
         let form = (
             <form onSubmit={this.orderHandler}>
                 {formElementsArray.map(formElement => (
@@ -186,9 +197,12 @@ class ContactData extends Component {
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched}
+                        errMassege={formElement.config.errorMassege}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
                 ))}
-                <Button btnType="Success">ORDER</Button>
+                <Button 
+                    btnType="Success"
+                    disabled={!this.state.formIsValid}>ORDER</Button>
             </form>);
         if (this.state.loading){
             form = <Spinner />;
