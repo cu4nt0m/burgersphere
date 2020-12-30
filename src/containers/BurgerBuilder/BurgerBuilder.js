@@ -97,19 +97,15 @@ componentDidMount() {
     purchaseContinueHandler = () => {
         //alert('You are going well!');
         
-        const queryParams = [];
-        for (let i in this.state.ingridients) {
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
-            //We loop our ingre dients in queryParams as ['bacon=0','meat=1',...] 
-        }
-        queryParams.push('price='+ this.props.totalPrice);
-        const queryString = queryParams.join('&');
+        // const queryParams = [];
+        // for (let i in this.state.ingridients) {
+        //     queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
+        //     //We loop our ingre dients in queryParams as ['bacon=0','meat=1',...] 
+        // }
+        // queryParams.push('price='+ this.props.totalPrice);
+        // const queryString = queryParams.join('&');
         //join the array elements together with an '&' between, so we get sth like : 'bacon=0&meat=1...'
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryString
-            //we push that string we made to the /checkout path and search param, so we can access it in the checkout page.
-        });
+        this.props.history.push('/checkout');
         }
 //end of methods-----------------------
 
