@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import axios from '../../hoc/axios-orders'; //created instance of axios
 
 import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../hoc/axios-orders'; //created instance of axios
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as burgerBuilderActions from '../../store/actions/index';
@@ -14,26 +14,18 @@ import * as burgerBuilderActions from '../../store/actions/index';
 //a good place to fetch data(axios) 
 //is inside the componentDidMount() lifecycle.
 
-//Ingridient prices..
-
 
 //Initializations
 class BurgerBuilder extends Component {
     state = {
         purchasing: false,
-        loading: false,
-        error: false
+        // loading: false,
+        // error: false
     }
 
 componentDidMount() {
     console.log(this.props);
-    // axios.get('https://burgershpear-default-rtdb.firebaseio.com/ingridients.json')
-    //     .then(response => {
-    //         this.setState({ingridients: response.data});
-    //     })
-    //     .catch(error => {
-    //         this.setState({error: true});
-    //     });
+    this.props.onInitIngridients();
 }
 
 //methods----------------
@@ -119,7 +111,7 @@ componentDidMount() {
         };
         
     //checking till ingredients get request finishes then renders
-        let burger = this.state.error ? 
+        let burger = this.props.error ? 
             <p style={{textAlign: 'center'}}>Ingredients can not load. Network error!</p>
              : <Spinner />;
         let orderSummary = null;
@@ -144,9 +136,9 @@ componentDidMount() {
                     price={this.props.totalPrice}/>;
 
             }
-        if (this.state.loading) {
-            orderSummary = <Spinner />;
-        }
+        // if (this.state.loading) {
+        //     orderSummary = <Spinner />;
+        // }
 //end of Render section -=-=-=-=-=-=--=-=-=-=-=
         return(
             <Aux>
@@ -162,14 +154,16 @@ componentDidMount() {
 const mapStateToProps = state => {
     return {
         ings: state.ingridients,
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        error: state.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onIngridientAdded: (ingName) => dispatch(burgerBuilderActions.addIngridient(ingName)),
-        onIngridientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngridient(ingName))
+        onIngridientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngridient(ingName)),
+        onInitIngridients: () => dispatch(burgerBuilderActions.initIngridients())
     }
 }
 

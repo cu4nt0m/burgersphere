@@ -6,7 +6,9 @@ import Button from '../../../components/UI/Button/Button';
 import axios from '../../../hoc/axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
     state = {
@@ -105,13 +107,12 @@ class ContactData extends Component {
                 valid: true
             }
         },
-        loading: false,
         formIsValid: false
     }
 //everything is handled in the state, we just bind them to some consts and post them to database with the following function.
     orderHandler = (event) => {
         event.preventDefault();
-        this.setState({loading: true});
+        
         const formData = {};
         //timeNow holds time of the submission moment and we post it to to db and we get it in my orders page :) 
         const timeNow = new Date().toLocaleString();
@@ -124,14 +125,16 @@ class ContactData extends Component {
             orderData: formData,
             orderDate: timeNow
         };
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false});
-                this.props.history.push('/');
-            })
-            .catch(error => {
-                this.setState({loading: false});
-            });
+
+        this.props.onOrderBurger(order);
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({loading: false});
+        //         this.props.history.push('/');
+        //     })
+        //     .catch(error => {
+        //         this.setState({loading: false});
+        //     });
     }
 
     checkValidity(value, rules) {
@@ -205,9 +208,11 @@ class ContactData extends Component {
                     btnType="Success"
                     disabled={!this.state.formIsValid}>ORDER</Button>
             </form>);
-        if (this.state.loading){
+
+        if (this.props.loading){
             form = <Spinner />;
         }
+
         return(
             <div className={classes.ContactData}>
                 <h4>Enter your contact data:</h4>
@@ -218,11 +223,18 @@ class ContactData extends Component {
 
 };
 
-const mapStateToProps = state => {
+const mapDispatchToProps = dispatch => {
     return {
-        ings: state.ingridients,
-        totalPrice: state.totalPrice
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapStateToProps = state => {
+    return {
+        ings: state.ingridients,
+        totalPrice: state.totalPrice,
+        loading: state.loading
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
