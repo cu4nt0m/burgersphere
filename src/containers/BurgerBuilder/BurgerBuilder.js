@@ -9,7 +9,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../hoc/axios-orders'; //created instance of axios
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/index';
 
 //a good place to fetch data(axios) 
 //is inside the componentDidMount() lifecycle.
@@ -168,8 +168,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngridientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGRIDIENT, ingridientName: ingName}),
-        onIngridientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGRIDIENT, ingridientName: ingName})
+        onIngridientAdded: (ingName) => dispatch(burgerBuilderActions.addIngridient(ingName)),
+        onIngridientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngridient(ingName))
     }
 }
 
