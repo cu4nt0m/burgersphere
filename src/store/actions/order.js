@@ -80,3 +80,10 @@ export const fetchOrders = () => {
         })
     }
 }
+
+export const deleteOrder = (id) => {
+    return {
+        type: actionTypes.DELETE_ORDER,
+        orderId: id
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './Order.module.css';
+import Button from '../UI/Button/Button';
 
 const order = (props) => {
     const ingridients = [];
@@ -33,6 +34,11 @@ const order = (props) => {
             <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
             <p>Order date: <span className={classes.Date}>{props.date}</span></p>
             {/* added date of now by me */}
+            <div>
+                <Button 
+                    btnType="Danger"
+                    clicked={props.delete}>Delete</Button>
+            </div>
             
         </div>
         );

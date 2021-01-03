@@ -19,7 +19,8 @@ class Orders extends Component {
                     <Order key={order.id}
                     ingridients={order.ingridients}
                     price={order.price}
-                    date={order.orderDate}/>
+                    date={order.orderDate}
+                    delete={() => this.props.onDeleteOrders(order.id)}/>
                 )).reverse()
             
         }
@@ -42,7 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrders: () => dispatch(actions.fetchOrders())
+        onFetchOrders: () => dispatch(actions.fetchOrders()),
+        onDeleteOrders: (id) => dispatch(actions.deleteOrder(id))
     }
 }
 
