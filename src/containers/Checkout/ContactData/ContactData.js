@@ -103,7 +103,7 @@ class ContactData extends Component {
                     ]
                 },
                 validation: {},
-                value: '',
+                value: 'fastest',
                 valid: true
             }
         },
@@ -231,9 +231,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingridients,
-        totalPrice: state.totalPrice,
-        loading: state.loading
+        ings: state.burgerBuilder.ingridients,
+        totalPrice: state.burgerBuilder.totalPrice,
+        loading: state.order.loading
     }
 }
 

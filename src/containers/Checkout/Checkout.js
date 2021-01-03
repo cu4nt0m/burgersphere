@@ -22,6 +22,7 @@ class Checkout extends Component {
     //     this.setState({ingridients: ingridients, totalPrice: price});
     // }
 
+
     checkoutCancelled = () => {
         this.props.history.goBack();
     }
@@ -31,22 +32,23 @@ class Checkout extends Component {
 
     render() {
         let summary = <Redirect to="/" />
-
         if (this.props.ings) {
+            const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;
             summary = (
                 <div>
-                <CheckoutSummary 
-                    ingridients={this.props.ings}
-                    checkoutCancelled={this.checkoutCancelled}
-                    checkoutContinued={this.checkoutContinued}/>
-                <Route path={this.props.match.url + '/contact-data'}
-                    component={ContactData} 
-                    // render={(props) => <ContactData 
-                    //     ingridients= {this.props.ings} 
-                    //     price={this.props.totalPrice}
-                    //     {...props}/>}
-                    />
-                    </div>);
+                    {purchasedRedirect}
+                    <CheckoutSummary 
+                        ingridients={this.props.ings}
+                        checkoutCancelled={this.checkoutCancelled}
+                        checkoutContinued={this.checkoutContinued}/>
+                    <Route path={this.props.match.url + '/contact-data'}
+                        component={ContactData} 
+                        // render={(props) => <ContactData 
+                        //     ingridients= {this.props.ings} 
+                        //     price={this.props.totalPrice}
+                        //     {...props}/>}
+                        />
+                </div>);
         }
         return summary;
     }
@@ -54,9 +56,11 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingridients,
-        
+        ings: state.burgerBuilder.ingridients,
+        purchased: state.order.purchased
     }
 }
+
+
 
 export default connect(mapStateToProps)(Checkout);

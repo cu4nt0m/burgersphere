@@ -9,7 +9,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as burgerBuilderActions from '../../store/actions/index';
+import * as actions from '../../store/actions/index';
 
 //a good place to fetch data(axios) 
 //is inside the componentDidMount() lifecycle.
@@ -88,7 +88,7 @@ componentDidMount() {
 
     purchaseContinueHandler = () => {
         //alert('You are going well!');
-        
+
         // const queryParams = [];
         // for (let i in this.state.ingridients) {
         //     queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingridients[i]));
@@ -97,8 +97,10 @@ componentDidMount() {
         // queryParams.push('price='+ this.props.totalPrice);
         // const queryString = queryParams.join('&');
         //join the array elements together with an '&' between, so we get sth like : 'bacon=0&meat=1...'
+        this.props.onInitPurchase();
         this.props.history.push('/checkout');
         }
+
 //end of methods-----------------------
 
 //Render section-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -153,17 +155,19 @@ componentDidMount() {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingridients,
-        totalPrice: state.totalPrice,
-        error: state.error
+        ings: state.burgerBuilder.ingridients,
+        totalPrice: state.burgerBuilder.totalPrice,
+        error: state.burgerBuilder.error,
+        purchased: state.order.purchased
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngridientAdded: (ingName) => dispatch(burgerBuilderActions.addIngridient(ingName)),
-        onIngridientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngridient(ingName)),
-        onInitIngridients: () => dispatch(burgerBuilderActions.initIngridients())
+        onIngridientAdded: (ingName) => dispatch(actions.addIngridient(ingName)),
+        onIngridientRemoved: (ingName) => dispatch(actions.removeIngridient(ingName)),
+        onInitIngridients: () => dispatch(actions.initIngridients()),
+        onInitPurchase: () => dispatch(actions.purchaseInit())
     }
 }
 
