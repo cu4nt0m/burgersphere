@@ -22,7 +22,13 @@ class Orders extends Component {
                     date={order.orderDate}
                     delete={() => this.props.onDeleteOrders(order.id)}/>
                 )).reverse()
-            
+        }
+        if (this.props.error) {
+            orders = (
+                <div>
+                    <p style={{textAlign: 'center'}}>Can not load the Orders, Permission Denied!</p>
+                    <hr />
+                </div>)
         }
         console.log(this.props.orders);
         return(
@@ -37,7 +43,8 @@ class Orders extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.order.orders,
-        loading: state.order.loading
+        loading: state.order.loading,
+        error: state.order.error
     }
 }
 
