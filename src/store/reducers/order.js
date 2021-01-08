@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     orders: [],
     loading: false,
-    purchased: false
+    purchased: false,
+    error: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -50,7 +51,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ORDERS_FAIL:
             return {
                 ...state,
-                loading: false
+                loading: false,
+                error: action.error
             }
         case actionTypes.DELETE_ORDER:
             const newOrders = state.orders.filter(order => order.id !== action.orderId);

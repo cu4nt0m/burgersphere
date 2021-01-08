@@ -10,3 +10,9 @@ export {
     fetchOrders,
     deleteOrder
 } from './order';
+
+export {
+    auth,
+    logout,
+    setAuthRedirectPath
+} from './auth';

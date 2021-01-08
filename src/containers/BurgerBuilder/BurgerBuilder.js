@@ -79,6 +79,13 @@ componentDidMount() {
     // };
 
     orderPurchaseHandler = () => {
+        if(this.props.isAuthenticated) {
+            this.setState({purchasing: true});
+        }
+        else {
+            this.props.onSetAuthRedirectPath('/checkout');
+            this.props.history.push('/auth');
+        }
         this.setState({purchasing: true});
     }
 
@@ -128,7 +135,8 @@ componentDidMount() {
                             disabled={disabledInfo}
                             price={this.props.totalPrice}
                             orderDisabled={this.updatePurchaseState(this.props.ings)}
-                            orderBtn={this.orderPurchaseHandler}/>
+                            orderBtn={this.orderPurchaseHandler}
+                            isAuth={this.props.isAuthenticated}/>
                 </Aux>
                 );
                 orderSummary = <OrderSummary 
@@ -158,7 +166,8 @@ const mapStateToProps = state => {
         ings: state.burgerBuilder.ingridients,
         totalPrice: state.burgerBuilder.totalPrice,
         error: state.burgerBuilder.error,
-        purchased: state.order.purchased
+        purchased: state.order.purchased,
+        isAuthenticated: state.auth.token !== null
     }
 }
 
@@ -167,7 +176,8 @@ const mapDispatchToProps = dispatch => {
         onIngridientAdded: (ingName) => dispatch(actions.addIngridient(ingName)),
         onIngridientRemoved: (ingName) => dispatch(actions.removeIngridient(ingName)),
         onInitIngridients: () => dispatch(actions.initIngridients()),
-        onInitPurchase: () => dispatch(actions.purchaseInit())
+        onInitPurchase: () => dispatch(actions.purchaseInit()),
+        onSetAuthRedirectPath: (path) =>dispatch(actions.setAuthRedirectPath(path))
     }
 }
 

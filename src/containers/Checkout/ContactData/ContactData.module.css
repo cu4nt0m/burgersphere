@@ -7,12 +7,12 @@
   text-align: center;
 }
 
-.Input {
+/* .Input {
   display: block;
   margin-top: 3px;
   border-color: #ffffff;
   border-right: 2px solid rgb(189, 132, 8);
-}
+} */
 
 @media (min-width: 600px) {
   .ContactData {
