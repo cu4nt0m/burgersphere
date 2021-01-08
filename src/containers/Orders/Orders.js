@@ -8,7 +8,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 class Orders extends Component {
 
     componentDidMount() {
-        this.props.onFetchOrders();
+        this.props.onFetchOrders(this.props.token);
     }
 
     render() {
@@ -23,13 +23,13 @@ class Orders extends Component {
                     delete={() => this.props.onDeleteOrders(order.id)}/>
                 )).reverse()
         }
-        if (this.props.error) {
-            orders = (
-                <div>
-                    <p style={{textAlign: 'center'}}>Can not load the Orders, Permission Denied!</p>
-                    <hr />
-                </div>)
-        }
+        // if (this.props.error) {
+        //     orders = (
+        //         <div>
+        //             <p style={{textAlign: 'center'}}>Can not load the Orders, Permission Denied!</p>
+        //             <hr />
+        //         </div>)
+        // }
         console.log(this.props.orders);
         return(
             <div>
@@ -44,13 +44,14 @@ const mapStateToProps = state => {
     return {
         orders: state.order.orders,
         loading: state.order.loading,
-        error: state.order.error
+        error: state.order.error,
+        token: state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrders: () => dispatch(actions.fetchOrders()),
+        onFetchOrders: (token) => dispatch(actions.fetchOrders(token)),
         onDeleteOrders: (id) => dispatch(actions.deleteOrder(id))
     }
 }

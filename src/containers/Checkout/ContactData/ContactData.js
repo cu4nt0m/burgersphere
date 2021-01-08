@@ -89,7 +89,8 @@ class ContactData extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    isEmail: true
                 },
                 valid: false,
                 touched: false
@@ -126,7 +127,7 @@ class ContactData extends Component {
             orderDate: timeNow
         };
 
-        this.props.onOrderBurger(order);
+        this.props.onOrderBurger(order, this.props.token);
         // axios.post('/orders.json', order)
         //     .then(response => {
         //         this.setState({loading: false});
@@ -150,6 +151,11 @@ class ContactData extends Component {
 
         if (rules.maxLength) {
             isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        if (rules.isEmail) {
+            const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            isValid = pattern.test(value);
         }
 
         return isValid;
@@ -225,7 +231,7 @@ class ContactData extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+        onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
     }
 }
 
@@ -233,7 +239,8 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingridients,
         totalPrice: state.burgerBuilder.totalPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token
     }
 }
 
