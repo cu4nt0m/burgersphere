@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './NavigationItems.module.css';
-
 import NavigationItem from './NavigationItem/NavigationItem';
+
 
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
@@ -10,6 +10,7 @@ const navigationItems = (props) => (
         {props.isAuthenticated 
             ?   <NavigationItem link="/logout" >Logout</NavigationItem>
             :   <NavigationItem link="/auth" >Sign in</NavigationItem>}
+        <NavigationItem link="/contact">Contact</NavigationItem>
     </ul>
 );
 

@@ -10,6 +10,7 @@ import Logout from './Auth/Logout/Logout';
 import Orders from './Orders/Orders';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import * as actions from '../store/actions/index';
+import Instagram from '../components/Navigation/NavigationItems/NavigationItem/Instagram';
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/auth" component= {Auth} />
+        <Route path="/contact" component= {Instagram} />
         <Route path="/" exact component= {BurgerBuilder} />
         <Redirect to="/" />
       </Switch>
@@ -31,6 +33,7 @@ class App extends Component {
             <Route path="/checkout" component= {Checkout} />
             <Route path="/orders" component= {Orders} />
             <Route path="/logout" component= {Logout} />
+            <Route path="/contact" component= {Instagram} />
             <Route path="/auth" component= {Auth} />
             <Route path="/" exact component= {BurgerBuilder} />
             <Redirect to="/" />
