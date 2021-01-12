@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import classes from './ContactData.module.css';
 
+import { checkValidity } from '../../../shared/Validation';
 import Button from '../../../components/UI/Button/Button';
 import axios from '../../../hoc/axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -139,29 +140,6 @@ class ContactData extends Component {
         //     });
     }
 
-    checkValidity(value, rules) {
-        let isValid = true;
-
-        if (rules.required ) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            isValid = pattern.test(value);
-        }
-
-        return isValid;
-    }
-
     inputChangedHandler = (event, inputIdentifier) => {
         const cloneOrderForm = {
             ...this.state.orderForm
@@ -171,7 +149,7 @@ class ContactData extends Component {
         }
 
         cloneElementForm.value = event.target.value;
-        cloneElementForm.valid = this.checkValidity(cloneElementForm.value, cloneElementForm.validation)
+        cloneElementForm.valid = checkValidity(cloneElementForm.value, cloneElementForm.validation)
         cloneElementForm.touched = true;
         cloneOrderForm[inputIdentifier] = cloneElementForm;
 
