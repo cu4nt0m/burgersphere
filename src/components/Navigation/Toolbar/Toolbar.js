@@ -5,6 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import DrawerToggle from '../SideDrawer/DrawerToogle/DrawerToggle';
 
 const toolbar = (props) => (
+    
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={props.menuClicked} />
         <div className={classes.Logo}>

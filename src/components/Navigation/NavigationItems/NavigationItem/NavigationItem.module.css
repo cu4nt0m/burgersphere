@@ -10,7 +10,7 @@
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
-  border-bottom: 4px solid rgb(168, 168, 168);
+  border-bottom: 4px solid transparent;
   display: block;
 }
 

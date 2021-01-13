@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/burgersphere/static/css/main.608494ae.chunk.css",
-    "main.js": "/burgersphere/static/js/main.84b5207d.chunk.js",
-    "main.js.map": "/burgersphere/static/js/main.84b5207d.chunk.js.map",
+    "main.css": "/burgersphere/static/css/main.910b4e21.chunk.css",
+    "main.js": "/burgersphere/static/js/main.d1fe6da3.chunk.js",
+    "main.js.map": "/burgersphere/static/js/main.d1fe6da3.chunk.js.map",
     "runtime-main.js": "/burgersphere/static/js/runtime-main.4b407cbd.js",
     "runtime-main.js.map": "/burgersphere/static/js/runtime-main.4b407cbd.js.map",
     "static/js/2.8855a104.chunk.js": "/burgersphere/static/js/2.8855a104.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.d013c16e.chunk.js": "/burgersphere/static/js/3.d013c16e.chunk.js",
     "static/js/3.d013c16e.chunk.js.map": "/burgersphere/static/js/3.d013c16e.chunk.js.map",
     "index.html": "/burgersphere/index.html",
-    "static/css/main.608494ae.chunk.css.map": "/burgersphere/static/css/main.608494ae.chunk.css.map",
+    "static/css/main.910b4e21.chunk.css.map": "/burgersphere/static/css/main.910b4e21.chunk.css.map",
     "static/js/2.8855a104.chunk.js.LICENSE.txt": "/burgersphere/static/js/2.8855a104.chunk.js.LICENSE.txt",
     "static/media/burger-logo.ec69c7f6.png": "/burgersphere/static/media/burger-logo.ec69c7f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4b407cbd.js",
     "static/js/2.8855a104.chunk.js",
-    "static/css/main.608494ae.chunk.css",
-    "static/js/main.84b5207d.chunk.js"
+    "static/css/main.910b4e21.chunk.css",
+    "static/js/main.d1fe6da3.chunk.js"
   ]
 }
